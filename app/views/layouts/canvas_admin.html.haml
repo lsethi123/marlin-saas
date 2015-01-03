@@ -81,7 +81,7 @@
               = link_to dashboard_path do
                 %i.fa.fa-dashboard
                 = t('.dashboard')
-            %li{:class => ['properties', 'rates'].include?(controller_name) ? 'active' : ''}
+            %li{:class => ['properties', 'pictures', 'rates'].include?(controller_name) ? 'active' : ''}
               = link_to properties_path do
                 %i.fa.fa-list
                 = t '.properties'                           
