@@ -31,6 +31,7 @@ Houzio::Application.routes.draw do
     resources :rates, controller: 'properties/rates'
     resources :pictures, controller: 'properties/pictures'
     member do 
+      get   :availability
       get   :book
       get   :booking_detail
       get   :rental_history

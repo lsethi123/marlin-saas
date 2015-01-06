@@ -8,7 +8,7 @@
   .clearfix10
   .row
     .col-md-12
-      #datepicker.input-daterange.input-group
+      #datepicker.input-daterange.input-group{'data-occupied-days-url' => availability_property_path(@property) }
         = f.text_field :check_in, :class => 'form-control datepicker input-lg', placeholder: 'Check in'
         %span.input-group-addon to
         = f.text_field :check_out, :class => 'form-control datepicker input-lg', placeholder: 'Check out'

@@ -104,6 +104,40 @@ li.token-input-token-facebook {
   }
 }
 
+// Datepicker in Booking popup
+.datepicker {
+  .datepicker-days {
+    table {
+      td.range {
+        background-color: #E5D1CF;
+      }
+      tr td.active:hover, 
+      tr td.active:hover:hover, 
+      tr td.active.disabled:hover, 
+      tr td.active.disabled:hover:hover, 
+      tr td.active:active, 
+      tr td.active:hover:active, 
+      tr td.active.disabled:active, 
+      tr td.active.disabled:hover:active, 
+      tr td.active.active, 
+      tr td.active.active:hover, 
+      tr td.active.disabled.active, 
+      tr td.active.disabled.active:hover, 
+      tr td.active.disabled, 
+      tr td.active.disabled:hover, 
+      tr td.active.disabled.disabled, 
+      tr td.active.disabled.disabled:hover, 
+      tr td.active[disabled], .datepicker 
+      tr td.active[disabled]:hover, 
+      tr td.active.disabled[disabled], 
+      tr td.active.disabled[disabled]:hover
+      {
+        background-color: #e5412d; 
+      }
+    }    
+  }
+}
+
 
 /* tablets and phones */
 @media (max-width: $screen-sm-max) { 

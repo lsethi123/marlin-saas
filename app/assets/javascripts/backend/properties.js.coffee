@@ -1,13 +1,34 @@
 window.Properties =
 
   init: ->
-    $("#property_booking_form .input-daterange").datepicker(
-      format: "yyyy/mm/dd",
-      # minDate: 0      
+    nowTemp = new Date()
+    now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0)
+    $datepicka = $("#property_booking_form .input-daterange")
+
+    $datepicka.datepicker(
+      format: "yyyy/mm/dd"
+      # todayHighlight: true
+      # minDate: 0 
+      # startDate: nowTemp,  # this works perfectly
+      beforeShowDay: (date) ->
+        console.log "OD:::" + Properties.occupied_days
+        date_str = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate()
+        if Properties.occupied_days == null          
+          _params =
+            pid: $("#reservation_property_id").val() 
+            start_date: date_str
+          _url = $datepicka.data('occupied-days-url')
+          $.getJSON _url, _params, (data) ->  
+            console.log data
+          Properties.occupied_days = [date_str]
+        (date.getMonth() == 10) ? false : true
+        #date.valueOf() >= now.valueOf()
     ).on('show', (e) ->
-      
+      # when datepicker is shows up
     ).on('hide', (selectedDate) ->
-      $("#reservation_check_out").datepicker "setStartDate", selectedDate.date if @id is 'reservation_check_in' 
+      $("#reservation_check_out").datepicker defaultDate: selectedDate.date #if @id is 'reservation_check_in'
+    ).on('changeMonth', (e) ->
+      console.log "changeMonth: "
     ).on 'changeDate', (e) ->
       d1 = $('#reservation_check_in').datepicker('getDate')
       d2 = $('#reservation_check_out').datepicker('getDate')
@@ -20,6 +41,8 @@ window.Properties =
 
     $(document).on "submit", "#inquiery_booking #property_booking_form", (event) ->
       $('#inquiery_booking .modal-body').loading()
+
+  occupied_days: null
 
   load_booking_property: ->
     # Show booking details with rates : Add new Booking popup

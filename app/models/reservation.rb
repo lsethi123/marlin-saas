@@ -49,4 +49,15 @@ class Reservation
   def total_payment
     0
   end
+
+  class << self
+
+    def historical(dt_start, dt_end)
+      any_of( 
+        {'$and' => [{:check_in.gte => dt_start}, {:check_in.lte => dt_end}]},
+        {'$and' => [{:check_out.gte => dt_start}, {:check_out.lte => dt_end}]}
+      ) 
+    end
+
+  end
 end
