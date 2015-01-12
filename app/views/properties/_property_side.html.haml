@@ -32,6 +32,13 @@
       = t '.pictures'
     %i.fa.fa-chevron-right.list-group-chevron
     %span.badge= @property.pictures.count
+
+  = link_to booking_calendar_property_path(@property), class: 'list-group-item' do
+    %i.fa.fa-calendar
+    = precede '&nbsp;&nbsp;'.html_safe do 
+      \  
+      = t '.booking_calendar'
+    %i.fa.fa-chevron-right.list-group-chevron
   
   = link_to  rental_history_property_path(@property), class: 'list-group-item' do
     %i.fa.fa-archive

@@ -24,9 +24,9 @@
           / = link_to '', :class => "btn btn-warning" do
           /   %span.glyphicon.glyphicon-new-window
           /   Book
-          = link_to '', :class => "btn btn-secondary" do
+          = link_to booking_calendar_property_path(property), :class => "btn btn-secondary" do
             %span.glyphicon.glyphicon-calendar
-            = t '.availability'
+            = t '.calendar'
         .clearfix10
         .pull-right
           - property.tags.each do |t|

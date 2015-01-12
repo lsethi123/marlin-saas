@@ -1,0 +1,22 @@
+.row
+  .col-md-3
+    = render 'properties/property_side'
+  .col-md-9
+    %h3 Bookings Calendar
+    %hr
+    .row
+      .col-xs-4= link_to "< Previous", {date: @date.prev_month}, {class: 'text-primary'}
+      .col-xs-4        
+      .col-xs-4
+        .pull-right= link_to "Next >", {date: @date.next_month}, {class: 'text-primary'}
+    .row
+      = booking_calendar :start_date => @date, :occupied_src => @bookings.to_occupied_dates
+    .row
+      .col-md-4
+        .col-xs-2.bg-success= "&nbsp;".html_safe
+        .col-xs-4
+          Available
+        .col-xs-2.bg-danger= "&nbsp;".html_safe
+        .col-xs-4
+          Booked
+

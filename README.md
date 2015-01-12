@@ -20,6 +20,6 @@ To install MongoDB just follow this guide: http://docs.mongodb.org/manual/instal
 #Contribute
 * Send email to owner to add you as contributor and for access to trello.
 * Pick a feature, error or improvement from trello list.
-* Create feature branch, code and committ.
-* Create pull request.
+* Write as much tests as possible and make sure is passing in codeship.
+* And Create Pull request.
     

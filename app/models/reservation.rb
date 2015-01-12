@@ -49,4 +49,8 @@ class Reservation
   def total_payment
     0
   end
+
+  def self.to_occupied_dates
+    all.collect{|r| {id: r.id, in: r.check_in, out: r.check_out}}
+  end
 end

@@ -66,6 +66,15 @@ class PropertiesController < DashboardController
     ).order_by(check_in: :asc).page(params[:page]||1).per(20)
   end
 
+  def booking_calendar
+    @date     = params[:date] ? Date.parse(params[:date]) : Date.today.beginning_of_month
+    @end_date = (@date + 3.months).end_of_month
+    @bookings = @property.reservations.any_of( 
+      {'$and' => [{:check_in.gte => @date}, {:check_in.lte => @end_date}]},
+      {'$and' => [{:check_out.gte => @date}, {:check_out.lte => @end_date}]}
+    )
+  end
+
   private
 
   def set_property

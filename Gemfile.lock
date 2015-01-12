@@ -9,7 +9,7 @@ GIT
       tzinfo (>= 0.3.37)
 
 GIT
-  remote: https://github.com/adbeelitamar/canvas_admin_rails.git
+  remote: https://github.com/HouzIO/canvas_admin_rails.git
   revision: 8ae19cc54c3655c684cc23686873573312201753
   specs:
     canvas_admin_rails (0.0.1)

@@ -33,6 +33,7 @@ Houzio::Application.routes.draw do
     member do     
       get   :booking_detail
       get   :rental_history
+      get   :booking_calendar
       post  :update_rates
     end
     collection do

@@ -1,0 +1,37 @@
+// Bootstrapping calendar
+.parent_calendar {
+  @extend .col-md-4;
+  .month_title {
+    @extend .text-center;
+  }
+  .calendar {
+    @extend .table;
+    @extend .table-bordered; 
+    // @extend .table-highlight;
+    thead tr th, 
+    tbody tr td {
+      @extend .text-center;
+      border-color: #fff;
+    }
+    td:not(.notmonth) {
+      @extend .bg-success;
+    }
+    td:not(.notmonth).occupied {
+      @extend .bg-danger;
+    }
+    td:not(.notmonth).split-bottom {
+      background: linear-gradient(135deg, $state-success-bg 50%, $state-danger-bg 50%);
+      background-size: 100% 100%;
+    }
+    td:not(.notmonth).split-top {
+      background: linear-gradient(135deg, $state-danger-bg 50%, $state-success-bg 50%);
+      background-size: 100% 100%;
+    }
+    td.notmonth {
+      @extend .text-muted;
+    }    
+    .today {
+      font-weight: bold;
+    }  
+  }
+}
