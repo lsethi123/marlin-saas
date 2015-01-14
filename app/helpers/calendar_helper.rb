@@ -30,16 +30,15 @@ module CalendarHelper
     end
 
     def month_table(mday)
-      t = content_tag :table, class: 'calendar' do
-        header + week_rows(mday)
-      end
       content_tag :div, class: 'parent_calendar' do        
-        month_title(mday) + t
+        content_tag :table, class: 'calendar' do
+          month_title(mday) + header + week_rows(mday)
+        end
       end
     end
 
     def month_title(mday)
-      content_tag :p, mday.strftime("%B %Y"), class: 'month_title'
+      content_tag :caption, mday.strftime("%B %Y")
     end
 
     def header
@@ -66,13 +65,21 @@ module CalendarHelper
         range === day
       end
       if found_match = _match.try(:first)
-        extra_classes = 'occupied'
-        extra_classes << ' split-bottom' if day == found_match[:in]
-        extra_classes << ' split-top' if day == found_match[:out]
+        if day == found_match[:in]
+          extra_classes = 'occupied_check_in avail' 
+        elsif day == found_match[:out]        
+          extra_classes = 'occupied_check_out avail'
+        else
+          extra_classes = 'occupied'
+        end
       else
-        extra_classes = nil
-      end      
-      content_tag :td, day.day, class: day_classes(day, mday, extra_classes)
+        extra_classes = 'avail'
+      end 
+      default_opts =  {class: day_classes(day, mday, extra_classes), dt: day.strftime('%Y%m%d') }
+      opts = found_match.nil? ? {} : {'data-booking-id' => found_match[:id]}
+      opts = default_opts.merge(opts)
+
+      content_tag :td, day.day, opts
     end
 
     def day_classes(day, mday, extra=nil)

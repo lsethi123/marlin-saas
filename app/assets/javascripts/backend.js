@@ -22,6 +22,7 @@
 //= require bootstrap/dropdown
 //= require bootstrap/modal
 //= require bootstrap/tab
+//= require bootstrap/tooltip
 //= require turbolinks
 //= require_tree ./backend
 //= require hamlcoffee

@@ -1,9 +1,6 @@
 // Bootstrapping calendar
 .parent_calendar {
   @extend .col-md-4;
-  .month_title {
-    @extend .text-center;
-  }
   .calendar {
     @extend .table;
     @extend .table-bordered; 
@@ -19,19 +16,40 @@
     td:not(.notmonth).occupied {
       @extend .bg-danger;
     }
-    td:not(.notmonth).split-bottom {
+    td:not(.notmonth).occupied_check_in {
       background: linear-gradient(135deg, $state-success-bg 50%, $state-danger-bg 50%);
       background-size: 100% 100%;
     }
-    td:not(.notmonth).split-top {
+    td:not(.notmonth).occupied_check_out {
       background: linear-gradient(135deg, $state-danger-bg 50%, $state-success-bg 50%);
       background-size: 100% 100%;
     }
     td.notmonth {
       @extend .text-muted;
-    }    
+    }      
     .today {
       font-weight: bold;
     }  
+
+    // extra functionality
+    td.new_ci{
+      background: linear-gradient(135deg, $state-success-bg 50%, $btn-info-bg 50%);
+      background-size: 100% 100%;
+    }
+    td.new_co{
+      background: linear-gradient(135deg, $btn-info-bg 50%, $state-success-bg 50%);
+      background-size: 100% 100%;
+    }
+    td:not(.notmonth).new_co_ci{
+      background: linear-gradient(135deg, $btn-info-bg 50%, $state-danger-bg 50%);
+      // background-size: 100% 100%;
+    }
+    td:not(.notmonth).new_ci_co{
+      background: linear-gradient(135deg, $state-danger-bg 50%, $btn-info-bg 50%);
+      // background-size: 100% 100%;
+    }
+    td.new_bk{
+      background-color: $btn-info-bg;
+    }
   }
 }
